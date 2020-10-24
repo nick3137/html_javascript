@@ -1,0 +1,38 @@
+html,body{
+    background-color: #7fb3d5;
+    display: flex;
+    justify-content: center;
+}
+
+#header{
+    width: 960px;
+    height: 100px;
+    padding: 10px;
+    background-color: #333333;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 100px;
+    margin: 0;
+    text-align: center;
+}
+
+.btn{
+    width: 100px;
+    height: 50px; 
+    background-color: #333333;
+    color: white;
+    margin-right: 10px;
+    text-align: center;
+    line-height: 50px;
+    font-weight: bold;
+}
+
+.btn:hover{
+    background-color: rgb(139, 131, 15);
+}
+
+.txt{
+    width: 960px;
+    text-align: justify;
+    font-size: 18px;
+}
