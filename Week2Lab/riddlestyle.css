@@ -1,7 +1,13 @@
 html,body{
     background-color: #7fb3d5;
     display: flex;
+    font-family: 'Times New Roman', Times, serif;
     justify-content: center;
+}
+
+#container{
+    width: 970px;
+    padding: 10px;
 }
 
 #header{
@@ -16,12 +22,26 @@ html,body{
     text-align: center;
 }
 
+#h1{
+    width: 950px;
+    padding: 10px;
+    text-align: center;
+    background-color: #333333;
+    border: white;
+}
+
+#h2{
+    width: 950px;
+    padding: 10px;
+    background-color: #333333;
+}
+
 .btn{
     width: 100px;
     height: 50px; 
     background-color: #333333;
     color: white;
-    margin-right: 10px;
+    margin: 10px 10px 10px 0;
     text-align: center;
     line-height: 50px;
     font-weight: bold;
