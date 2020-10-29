@@ -57,6 +57,7 @@ html,body{
     margin-top: 10px;
     border-bottom: 3px solid white;
     color: white;
+    display: flex;
 }
 
 .title{
@@ -90,7 +91,9 @@ html,body{
 .content-left{
     width: 450px;
     height: 450px;
+    margin-right: 70px;
     text-align: center;
     background-color: rgb(150, 150, 150);
+    
 }
 
