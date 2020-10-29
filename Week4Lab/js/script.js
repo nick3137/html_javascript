@@ -4,7 +4,7 @@ var c = document.querySelector('canvas');
 var ctx = c.getContext('2d');
 
 var mario = new Image();
-//mario.src = 
+mario.src = 'images/mario.png';
 
 var x = 0;
 //Timer
@@ -31,7 +31,7 @@ function main(){
 
 
 
-    /*
+    
     //This draws a box/rectangle
 ctx.fillStyle = 'purple'
 ctx.fillRect(c.width/4, c.height/4, c.width/2, c.height/2);
@@ -64,8 +64,7 @@ ctx.fillText("Week 4 Lab", c.width/2 - 150, 50);
 ctx.strokeText("Week 4 Lab", c.width/2 - 150, 50);
 
 //Draw iamge to canvas
-ctx.drawImage(mario, 0, 0);
-*/
+ctx.drawImage(mario, x, 0, 200, 200);
 }
 
 function  drawBox(){
