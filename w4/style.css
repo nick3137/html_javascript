@@ -1,6 +1,7 @@
 html,body{
     height: 100%;
     margin: 0;
+    background-image: url("images/skyrim-wallpaper.jpg");
 }
 
 body{
@@ -11,7 +12,7 @@ body{
 
 #container{
     width:1000px;
-    background-color: tomato;
+    background-color: slategray;
     padding: 10px;
 }
 

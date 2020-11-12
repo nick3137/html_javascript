@@ -15,7 +15,7 @@ var start = 110;
 var finish = 700;
 
 // fuel variables
-var startFuel = randomRange(650, 150);
+var startFuel = randomRange(600,100);
 var fuel = startFuel;
 var barFullWidth = 300;
 
