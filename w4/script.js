@@ -31,11 +31,14 @@ function main(){
     if(sec > 0){
         runStartTimer();
         drawStartTimer();
+    }else{
+       x+=1; 
     }
+    
 
     ctx.lineWidth = 1;
         ctx.strokeStyle = 'black';
-        ctx.font = "50px Arial";
+        ctx.font = "40px Arial";
         ctx.textAlign = 'center';
         ctx.fillText("Week 4", c.width / 2, 50);
         ctx.strokeText("Week 4", c.width / 2, 50);
