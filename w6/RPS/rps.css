@@ -1,0 +1,34 @@
+html, body{
+    display: flex;
+    justify-content: center;
+   background-image: url(images/Retro.png);
+}
+
+nav{
+    display: flex;
+    justify-content: center;
+}
+
+#container{
+    width: 1018;
+    border: 1px solid  #04d9ff;
+    padding: 7px; 
+    background-color: rgba(69, 8, 109, 0.74);
+}
+
+canvas{
+    border: 3px solid #ff66ccb6;
+}
+
+a:link, a:hover{
+    background-color: #04d9ff;
+    padding: 10px;
+    margin: 20px;
+    text-decoration: none;
+    color: yellow;
+}
+
+a:hover{
+    background-color: #FF66CC;
+    color: black;
+}
