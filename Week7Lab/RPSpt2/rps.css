@@ -1,0 +1,32 @@
+html, body{
+    display: flex;
+    justify-content: center;
+}
+
+nav{
+    display: flex;
+    justify-content: center;
+}
+
+#container{
+    width: 1018;
+    border: 1px solid black;
+    padding: 7px;
+}
+
+canvas{
+    border: 1px solid black;
+}
+
+a:link, a:hover{
+    background-color: skyblue;
+    padding: 10px;
+    margin: 20px;
+    text-decoration: none;
+    color: yellow;
+}
+
+a:hover{
+    background-color: grey;
+    color: black;
+}
