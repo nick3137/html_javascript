@@ -4,15 +4,19 @@ var timer = requestAnimationFrame(main);
 var gravity = 1;
 var asteroids = new Array();
 var numAsteroids = 10;
+var gameOver = false;
+var score = 0;
 
 function randomRange(high, low){
     return Math.random() * ( high - low) + low;
 }
-
+//Asteroids GameObject Class
 function Asteroids(){
-    this.radius = randomRange(5, 10);
+    this.radius = randomRange(15, 2);
     this.x = randomRange(0 + this.radius, c.width - this.radius);
-    this.y = randomRange(0 + this.radius, c.height - this.radius);
+    this.y = randomRange(0 + this.radius, c.height - this.radius)- c.height;
+    this.vx = randomRange(-5, -10);
+    this.vy = randomRange(10, 5);
     this.color = "white";
 
     this.draw = function (){
@@ -35,8 +39,8 @@ for(var i = 0; i<numAsteroids; i++){
 function PlayerShip(){
     this.x = c.width/2;
     this.y = c.height/2;
-    this.w = 0;
-    this.h = 0;
+    this.w = 20;
+    this.h = 20;
     this.vx = 0;
     this.vy = 0;
     this.up = false;
@@ -141,11 +145,21 @@ function keyPressDown(e){
 
 function main(){
     ctx.clearRect(0,0,c.width, c.height);
-    ship.vy += gravity;
+    //Draws score to the HUD
+    ctx.save();
+    ctx.font = "15px Arial";
+    ctx.fillStyle = 'white';
+    ctx.fillText("Score: " + score.toString(), c.width - 150, 30);
+    ctx.restore();
+
+    //ship.vy += gravity;
 
     //key presses move the ship
     if(ship.up == true){
         ship.vy = -10
+    }
+    else{
+        ship.vy = 3;
     }
     if(ship.left == true){
         ship.vx = -10;
@@ -158,10 +172,58 @@ function main(){
     }
     //loops through asteroids instancess in array and draws them to the screen
     for(var i = 0; i<asteroids.length; i++){
+        var dX = ship.x - asteroids[i].x;
+        var dY = ship.y - asteroids[i].y;
+        var dist = Math.sqrt((dX*dX)+(dY*dY));
+
+        //checks for collision between asteroids and ship
+        if(detectCollision(dist, (ship.h/2 + asteroids[i].radius))){
+            console.log("Colliding with asteroid" + i);
+            gameOver = true;
+            document.removeEventListener("keydown", keyPressDown);
+            document.removeEventListener("keyup", keyPressUp);
+        }
+
+        if(asteroids[i].y > c.height + asteroids[i].radius){
+            asteroids[i].y = randomRange(c.height - asteroids[i].radius, asteroids[i].radius)-c.height;
+            asteroids[i].x = randomRange(c.width + asteroids[i].radius, asteroids[i].radius);
+        }
+
+        if(gameOver == false){
+            asteroids[i].y += asteroids[i].vy;
+        }
+
         asteroids[i].draw();
     }
 
-    ship.draw();
-    ship.move();
+        ship.draw();
+        if(gameOver == false){
+        ship.move();
+    }
+
+    //Be careful with "While"
+    while(asteroids.length < numAsteroids){
+        asteroids.push(new Asteroids());
+    }
+    
     timer = requestAnimationFrame(main);
 }
+
+function detectCollision(distance, calcDistance){
+    return distance < calcDistance;
+}
+
+function scoreTimer(){
+    if(gameOver == false){
+        score++;
+        //using modulus divide the score by 5 and if the remainder is zero add asteroids
+        if(score % 5 == 0){
+                numAsteroids += 5;
+                console.log(numAsteroids);
+        }
+        //console.log(score);
+        setTimeout(scoreTimer, 1000);
+    }
+}
+
+scoreTimer();
