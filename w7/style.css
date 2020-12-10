@@ -1,4 +1,9 @@
 html, body{
     display: flex;
     justify-content: center;
+    background-color: black;
+}
+
+canvas{
+    background-image: url(images/shapes.png);
 }
