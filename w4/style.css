@@ -34,7 +34,7 @@ main{
 }
 
 canvas{
-    background-color: white;
+    background-image: url(images/Skyrim-Background.png);
     border: 1px solid black;
     margin-bottom: 10px;
 }

@@ -11,7 +11,7 @@ var timer = requestAnimationFrame(main);
 var start = 110
 var finish = 900
 
-var startFuel = 200;
+var startFuel = 900;
 var fuel = startFuel;
 var barFullWidth = 300;
 
@@ -21,7 +21,7 @@ var frames = fps;
 
 function main(){
     timer = requestAnimationFrame(main)
-    ctx.clearRect(0, 0, 800, 600);
+    ctx.clearRect(0, 0, c.width, c.height);
     drawStartLine();
     drawFinishLine();
     drawSprite();
@@ -31,8 +31,13 @@ function main(){
     if(sec > 0){
         runStartTimer();
         drawStartTimer();
-    }else{
-       x+=1; 
+    }
+    
+    else{
+        if(fuel > 0){
+            x += 1;
+            fuel -= 1;
+        } 
     }
     
 
@@ -51,28 +56,30 @@ function main(){
 }
 
 function drawStartLine() {
-    ctx.fillStyle = 'slategray'
+    ctx.fillStyle = 'Black'
     ctx.fillRect(start, 100, 10, 500);
 }
 
 function drawFinishLine() {
-    ctx.fillStyle = 'slategray'
+    ctx.fillStyle = 'Black'
     ctx.fillRect(finish, 100, 10, 500);
 }
 
 function drawSprite(){
-    ctx.drawImage(SkyrimDova,x, 300, 100, 100 )
+    ctx.drawImage(SkyrimDova,x, 470, 100, 100 )
 }
 
 function drawFuelBar() {
     var barCurrentWidth = barFullWidth * getFuelPercentage();
+    ctx.fillStyle = 'black'
+    ctx.fillRect(start,70, barFullWidth, 10);
     ctx.fillStyle = 'skyblue'
     ctx.fillRect(start,70, barCurrentWidth, 10);
 }
 
 function drawFuelText(){
     ctx.fillStyle = 'black';
-    ctx.font = '30px Arial';
+    ctx.font = '30px https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap';
     ctx.fillText(fuel, start, 50);
 }
 
@@ -84,7 +91,7 @@ function drawResults(){
     if(x + 100 > finish){
         //Winning Condition
         ctx.fillStyle = 'black';
-        ctx.font = '30px Arial';
+        ctx.font = '30px https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap';
         ctx.textAlign = 'center';
         ctx.fillText("You made it to the finish line! You won!", c.width/2, c.height/2);
     }

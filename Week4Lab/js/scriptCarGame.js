@@ -15,7 +15,7 @@ var start = 110;
 var finish = 700;
 
 // fuel variables
-var startFuel = 200;
+var startFuel = 570;
 var fuel = startFuel;
 var barFullWidth = 300;
 
