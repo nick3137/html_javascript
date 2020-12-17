@@ -1,0 +1,42 @@
+html, body{
+    display: flex;
+    justify-content: center;
+    background-image: url(images/OnePieceBackground.png);
+}
+
+#container{
+    width:1000px;
+    background-color: rgba(255, 173, 65, 0.5);
+    padding: 10px;
+}
+
+header{
+    font-family: 'Dancing Script', cursive;
+    background-color: rgba(194, 21, 21, 0.5);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+nav{
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+    background-color: rgba(194, 21, 21, 0.5);
+    margin-bottom: 10px;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+canvas{
+    background-color: rgb(194, 21, 21,);
+}
+
+footer{
+    font-family: 'Dancing Script', cursive;
+    background-color: rgb(194, 21, 21, 0.5);
+    margin-bottom: 10px;
+    text-align: center;
+}

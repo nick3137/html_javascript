@@ -5,6 +5,10 @@ rps[0] = "Rock";
 rps[1] = "Paper";
 rps[2] = "Scissors";
 
+var BPS = new Image();
+
+BPS.src = "images/BPS.jpg";
+
 //Array of buttons
 var btn = document.querySelectorAll('a');
 //assign event listeners to the buttons
@@ -67,5 +71,5 @@ function play(playersChoice){
                 ctx.fillText("It's a tie", c.width/2, c.height/2 + 100)
             }
             break;
-    }
+    } 
 }
