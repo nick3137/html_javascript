@@ -11,16 +11,22 @@ var currentState = 0;
 var ship;
 var highScore = 0;
 var bgMain = new Image();
+var endScreen = new Image();
 var cannonSprite = new Image();
-var sunnySprite = new Image()
+var sunnySprite = new Image();
 
 bgMain.src = "images/OnePiece.jpg";
+endScreen.src = "images/onepiecehighscore.jpg";
 cannonSprite.src = "images/CannonBall.png";
 sunnySprite.src = "images/Sunny.png";
 
 
 bgMain.onload = function(){
     main()
+}
+
+endScreen.onload = function(){
+    main();
 }
 
 cannonSprite.onload = function(){
@@ -36,9 +42,9 @@ function randomRange(high, low){
 }
 //Asteroids GameObject Class
 function Cannons(){
-    this.radius = randomRange(15, 2);
+    this.radius = randomRange(12, 2);
     this.x = randomRange(0 - this.radius, c.width - this.radius);
-    this.y = randomRange(0 - this.radius, c.height - this.radius)- c.height;
+    this.y = randomRange(0 - this.radius, c.height - this.radius) - c.height;
     this.vx = randomRange(5, 10);
     this.vy = randomRange(10, 5);
     
@@ -86,9 +92,9 @@ function PlayerShip(){
             ctx.beginPath();
             ctx.fillStyle = "orange";
             ctx.moveTo(this.flamelength, 5);
-            ctx.lineTo(5, -5);
-            ctx.lineTo(-15, 5);
-            ctx.lineTo(this.flamelength, 5);
+            ctx.lineTo(10, -5);
+            ctx.lineTo(10, 5);
+            ctx.lineTo(this.flamelength, -5);
             ctx.closePath();
             ctx.fill();
             ctx.restore();
@@ -150,28 +156,34 @@ document.addEventListener("keyup", keyPressUp);
 
 function keyPressUp(e){
     console.log("Key released" + e.keyCode);
-    if(e.keyCode === 38){
+    if(e.keyCode === 87){
         ship.up = false;
     }
-    if(e.keyCode === 37){
+    if(e.keyCode === 65){
         ship.left = false;
     }
-    if(e.keyCode === 39){
+    if(e.keyCode === 68){
         ship.right = false;
+    }
+    if(e.keyCode === 83){
+        ship.down = false;
     }
     
 }
 
 function keyPressDown(e){
    // console.log("Key pressed" + e.keyCode);
-    if(e.keyCode === 38){
+    if(e.keyCode === 87){
         ship.up = true;
     }
-    if(e.keyCode === 37){
+    if(e.keyCode === 65){
         ship.left = true;
     }
-    if(e.keyCode === 39){
+    if(e.keyCode === 68){
         ship.right = true;
+    }
+    if(e.keyCode === 83){
+        ship.down = true;
     }
     if(gameOver == true){
         if(e.keyCode === 13){
@@ -224,7 +236,7 @@ gameStates[1] = function () {
         ship.vy = -10
     }
     else {
-        ship.vy = 3;
+        ship.vy = 0;
     }
     if (ship.left == true) {
         ship.vx = -10;
@@ -235,6 +247,10 @@ gameStates[1] = function () {
     else {
         ship.vx = 0;
     }
+    if(ship.down == true){
+        ship.vy = 10;
+    }
+    
 
     for (var i = 0; i < cannons.length; i++) {
         var dX = ship.x - cannons[i].x;
@@ -242,7 +258,7 @@ gameStates[1] = function () {
         var dist = Math.sqrt((dX * dX) + (dY * dY));
 
 
-        if (detectCollision(dist, (ship.h / 2 + cannons[i].radius))) {
+        if (detectCollision(dist, (ship.h / 1 + cannons[i].radius))) {
             console.log("Colliding with cannon" + i);
             currentState = 2;
             gameOver = true;
@@ -252,7 +268,7 @@ gameStates[1] = function () {
 
         if (cannons[i].y > c.height + cannons[i].radius) {
             cannons[i].y = randomRange(c.height - cannons[i].radius, cannons[i].radius) - c.height;
-            cannons[i].x = randomRange(c.width + cannons[i].radius, cannons[i].radius);
+            cannons[i].x = randomRange(c.width - cannons[i].radius, cannons[i].radius);
         }
 
         if (gameOver == false) {
@@ -266,7 +282,7 @@ gameStates[1] = function () {
         ship.move();
     }
 
-    //Be careful with "While"
+   
     while (cannons.length < numCannons) {
         cannons.push(new Cannons());
     }
@@ -276,9 +292,10 @@ gameStates[1] = function () {
 gameStates[2] = function(){
     if(score > highScore){
         highScore = score;
+        ctx.drawImage(endScreen, 0,0,c.width,c.height);
         ctx.save();
         ctx.font = "30px 'Dancing Script', cursive";
-        ctx.fillStyle = "white";
+        ctx.fillStyle = "black";
         ctx.textAlign = "center";
         ctx.fillText("Game Over, Your score was: " + score.toString(), c.width/2, c.height/2 - 60);
         ctx.fillText("Your New High Score is: " + highScore.toString() + "\n New Record", c.width/2, c.height/2 - 30);
@@ -291,7 +308,7 @@ gameStates[2] = function(){
     else{
         ctx.save();
         ctx.font = "30px 'Dancing Script', cursive";
-        ctx.fillStyle = "white";
+        ctx.fillStyle = " rgb(194, 21, 21)";
         ctx.textAlign = "center";
         ctx.fillText("Game Over, Your score was: " + score.toString(), c.width/2, c.height/2 - 60);
         ctx.fillText("Your High Score is: " + highScore.toString(), c.width/2, c.height/2 - 30);

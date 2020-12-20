@@ -6,13 +6,13 @@ html, body{
 
 #container{
     width:1000px;
-    background-color: rgba(255, 173, 65, 0.5);
+    background-color: rgb(255, 173, 65);
     padding: 10px;
 }
 
 header{
     font-family: 'Dancing Script', cursive;
-    background-color: rgba(194, 21, 21, 0.5);
+    background-color: rgb(194, 21, 21);
     margin-bottom: 10px;
     text-align: center;
 }
@@ -20,7 +20,7 @@ header{
 nav{
     font-family: 'Dancing Script', cursive;
     text-align: center;
-    background-color: rgba(194, 21, 21, 0.5);
+    background-color: rgb(194, 21, 21);
     margin-bottom: 10px;
 }
 
@@ -31,12 +31,12 @@ main{
 }
 
 canvas{
-    background-color: rgb(194, 21, 21,);
+    background-image: url(images/OnePieceCanvas.jpg);
 }
 
 footer{
     font-family: 'Dancing Script', cursive;
-    background-color: rgb(194, 21, 21, 0.5);
+    background-color: rgb(194, 21, 21);
     margin-bottom: 10px;
     text-align: center;
 }
